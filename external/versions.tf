@@ -1,13 +1,10 @@
 terraform {
   required_version = "~> 1.7"
 
-  backend "remote" {
-    hostname     = "app.terraform.io"
-    organization = "khuedoan"
-
-    workspaces {
-      name = "homelab-external"
-    }
+  backend "s3" {
+    bucket = "juvert-home-lab"
+    key    = "terraform.tfstate"
+    region = "us-west-2"
   }
 
   required_providers {
